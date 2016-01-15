@@ -10,9 +10,13 @@ Initial setup
 
 Install Python from Python.org.
 
+Put SeleniumJS somewhere. You can find the main file in a "bin" folder instead of the ZIP you download.
+
 Use "pip install Pillow selenium" to install the other two things needed.
 
 Edit screengrabs.py to customize the location of where it saves ("c:\screengrabs" or whatever you want).
+
+Also edit your SeleniumJS location.
 
 Continue editing to fix the mysites thing the way you want. The first entry is the URL in quotes (e.g., "http://www.google.com"). The second is a filename prefix -- perhaps you want "goog" or "google" or "maingoogle".
 
