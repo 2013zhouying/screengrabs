@@ -18,7 +18,8 @@ PhantomJSlocation = 'C:\helpers\phantomjs.exe'
 # So you can have as many sites as you want. Each goes in a parenthesis: (URL, abbreviation)
 mysites = [
     ("http://www.palmbeachpost.com", "pb"),
-    ("http://www.mypalmbeachpost.com", "my")
+    ("http://www.mypalmbeachpost.com", "my"),
+    ("http://www.palmbeachdailynews.com", "dn")
     ]
 
 
