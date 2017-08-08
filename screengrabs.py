@@ -30,7 +30,7 @@ datepath = strftime("/%Y/%m/%d/")
 filesuffix = strftime("_%Y-%m-%d_%H%M")
 
 if not os.path.exists(masterdirectory + datepath):
-    os.makedirs (masterdirectory + datepath)
+    os.makedirs(masterdirectory + datepath)
 
 
 browser = webdriver.PhantomJS(executable_path = PhantomJSlocation)
@@ -44,6 +44,8 @@ for site in mysites:
     browser.execute_script("window.scrollTo(0, 0);")     # Then return up top for header.
     sleep(delay)
     browser.save_screenshot(masterdirectory + "/screenie.png")
-    im = Image.open(masterdirectory + '/screenie.png').save(masterdirectory + datepath + abbreviation + filesuffix + ".jpg")
+    im = Image.open(masterdirectory + '/screenie.png')
+    im = im.convert("RGB")
+    im.save(masterdirectory + datepath + abbreviation + filesuffix + ".jpg")
 
 browser.quit()
