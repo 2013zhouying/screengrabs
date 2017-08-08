@@ -5,6 +5,7 @@ from time import strftime, sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+import selenium.webdriver.chrome.service as service
 
 # pip install Pillow
 # pip install selenium
@@ -13,6 +14,8 @@ from selenium.common.exceptions import TimeoutException
 
 masterdirectory = "e:\screengrabs"
 PhantomJSlocation = 'C:\helpers\phantomjs.exe'
+chromedriverlocation = 'c:\helpers\chromedriver.exe'
+chromebinarylocation = 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
 
 
 # So you can have as many sites as you want. Each goes in a parenthesis: (URL, abbreviation)
@@ -34,8 +37,19 @@ if not os.path.exists(masterdirectory + datepath):
 
 
 browser = webdriver.PhantomJS(executable_path = PhantomJSlocation)
-#webdriver.manage().window().setSize( new Dimension( 1500, 6000 ) );
 browser.set_window_size(1300, 1920);
+
+# service = service.Service(chromedriverlocation)
+# service.start()
+# capabilities = {'chrome.binary': chromebinarylocation}
+# driver = webdriver.Remote(service.service_url, capabilities)
+
+#options = webdriver.ChromeOptions()
+# options.binary_location = 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
+#options.binary_location = chromedriverlocation
+#options.add_argument('headless')
+#options.add_argument('window-size=1300x1920')
+#driver = webdriver.Chrome(chrome_options=options)
         
 for site in mysites:
     URL, abbreviation = site
@@ -45,7 +59,7 @@ for site in mysites:
     sleep(delay)
     browser.save_screenshot(masterdirectory + "/screenie.png")
     im = Image.open(masterdirectory + '/screenie.png')
-    im = im.convert("RGB")
-    im.save(masterdirectory + datepath + abbreviation + filesuffix + ".jpg")
+    # im = im.convert("RGB")
+    im.save(masterdirectory + datepath + abbreviation + filesuffix + ".png", optimize=True)
 
 browser.quit()
