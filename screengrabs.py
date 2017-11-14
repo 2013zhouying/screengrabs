@@ -37,7 +37,7 @@ if not os.path.exists(masterdirectory + datepath):
 
 
 browser = webdriver.PhantomJS(executable_path = PhantomJSlocation)
-browser.set_window_size(1300, 1920);
+browser.set_window_size(1300, 2500);
 
 # service = service.Service(chromedriverlocation)
 # service.start()
@@ -53,10 +53,16 @@ browser.set_window_size(1300, 1920);
         
 for site in mysites:
     URL, abbreviation = site
+    print("Working on " + URL)
     browser.get(URL)
+    sleep(delay)
+    print("Thing should have downloaded by now. Scrolling down.")
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")       # activate scroll-over stuff like photo gallery
     browser.execute_script("window.scrollTo(0, 0);")     # Then return up top for header.
+    print("Waiting for Ajax-y trigger-y stuff to go.")
     sleep(delay)
+    browser.execute_script("window.scrollTo(0, 0);")     # Then return up top for header.
+    print("Saving " + URL)
     browser.save_screenshot(masterdirectory + "/screenie.png")
     im = Image.open(masterdirectory + '/screenie.png')
     # im = im.convert("RGB")
