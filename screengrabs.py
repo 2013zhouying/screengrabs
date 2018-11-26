@@ -20,9 +20,8 @@ chromebinarylocation = 'C:\Program Files (x86)\Google\Chrome\Application\chrome.
 
 # So you can have as many sites as you want. Each goes in a parenthesis: (URL, abbreviation)
 mysites = [
-    ("http://www.palmbeachpost.com", "pb"),
-    ("http://www.mypalmbeachpost.com", "my"),
-    ("http://www.palmbeachdailynews.com", "dn")
+    ("https://www.palmbeachpost.com", "pb"),
+    ("https://www.palmbeachdailynews.com", "dn")
     ]
 
 
